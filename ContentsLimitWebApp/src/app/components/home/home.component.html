@@ -1,0 +1,24 @@
+<app-add-item [categoriesInput] = "categories"
+              (addItemEvent)="onItemAdded($event)"></app-add-item>
+
+<div class="container mt-10 mb-10" *ngIf="show()">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Item Name</th>
+        <th scope="col">Item Value</th>
+        <th scope="col">Manage</th>
+      </tr>
+    </thead>
+    <tbody app-category *ngFor="let category of categoryItems"
+           [categoryInput]="category"
+           [itemsInput]="category.items"
+           (deleteItemEvent)="onItemDeleted($event)">
+    </tbody>
+    <tr style="background-color:lightgrey">
+      <td><h5>Total value of items</h5></td>
+      <td><h5>{{totalAmount}}</h5></td>
+      <td></td>
+    </tr>
+  </table>
+</div>

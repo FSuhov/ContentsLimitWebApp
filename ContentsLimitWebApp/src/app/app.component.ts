@@ -15,7 +15,7 @@ export class AppComponent {
     }, error => console.error(error));
   }
 
-  title = 'ContentsLimitWebApp';
+  title = 'Nude Solutions - Alex Brylov';
 }
 
 interface WeatherForecast {

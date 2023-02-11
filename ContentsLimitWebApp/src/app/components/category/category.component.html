@@ -1,0 +1,8 @@
+<tr app-item *ngFor="let item of items"
+    [itemInput]="item"
+    (deleteItemEvent)="onItemDeleted($event)"></tr>
+<tr *ngIf="show()">
+  <td>Total {{category.categoryName}}</td>
+  <td>{{category.totalAmount}}</td>
+  <td></td>
+</tr>
