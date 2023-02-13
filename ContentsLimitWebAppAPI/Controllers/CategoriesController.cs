@@ -1,36 +1,34 @@
 ﻿using ContentsLimitWebAppAPI.Entities;
 using ContentsLimitWebAppAPI.Interfaces;
-using ContentsLimitWebAppAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContentsLimitWebAppAPI.Controllers {
 
+  /// <summary>
+  /// Controller, exposing the API for managing Categories. 
+  /// </summary>
   [ApiController]
   [Route("[controller]")]
   public class CategoriesController : ControllerBase {
     
     private readonly ICategoriesService _categoriesService;
+
+    /// <summary>
+    /// Initializes new instance of CategoriesController.
+    /// </summary>
+    /// <param name="categoriesService">Instance of CategoryService</param>
     public CategoriesController(ICategoriesService categoriesService) {
       _categoriesService = categoriesService;
     }
 
+    /// <summary>
+    /// Fetches Categories. Handles http request GET "{url}/categories".
+    /// </summary>
+    /// <returns>Collection of Categories</returns>
     [HttpGet(Name = "GetCategory")]
     public async Task<ActionResult<IEnumerable<Item>>> GetItems() {
       var categories = await _categoriesService.GetCategoriesAsync();
       return Ok(categories);
-    }
-
-    [HttpPost(Name = "InsertCategory")]
-    public async Task<ActionResult<int>> InsertCategory(Category category) {
-
-      var insertedId = await _categoriesService.InsertCategoryAsync(category);
-      return Ok(insertedId);
-    }
-
-    [HttpDelete(Name = "DeleteCategory")]
-    public async Task<IActionResult> DeleteCategory(int id) {
-      await _categoriesService.DeleteCategoryAsync(id);
-      return NoContent();
-    }
+    }    
   }
 }

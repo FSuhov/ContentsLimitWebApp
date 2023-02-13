@@ -1,9 +1,16 @@
 ﻿using ContentsLimitWebAppAPI.Entities;
 
 namespace ContentsLimitWebAppAPI.Interfaces {
+
+  /// <summary>
+  /// Contains definitions of business logic methods for Categories Service.
+  /// </summary>
   public interface ICategoriesService {
-    Task<IEnumerable<Category>> GetCategoriesAsync();
-    Task<int> InsertCategoryAsync(Category category);
-    Task DeleteCategoryAsync(int id);
+
+    /// <summary>
+    /// Gets Categories from Database and returns it to User Interface.
+    /// </summary>
+    /// <returns>Collection of Categories</returns>
+    Task<IEnumerable<Category>> GetCategoriesAsync();    
   }
 }
